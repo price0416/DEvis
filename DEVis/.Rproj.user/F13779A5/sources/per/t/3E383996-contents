@@ -1,3 +1,0 @@
-library(DESeq2)
-setwd("../DEVis/")
-library(DEVis)

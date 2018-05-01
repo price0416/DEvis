@@ -1,0 +1,203 @@
+library(DESeq2)
+remove.packages(GenomeInfoDb)
+remove.packages("GenomeInfoDb")
+remove.packages()
+remove.packages("DESeq2")
+remove.packages("GenomeInfoDb")
+remove.packages("IRanges")
+remove.packages("GenomicRanges")
+remove.packages("GenomeInfoDb")
+remove.packages("DESeq2")
+library(Seurat)
+remove.packages(Seurat)
+remove.packages("Seurat")
+install_github("satijalab/seurat")
+library(devtools)
+install_github("satijalab/seurat")
+library(Seurat)
+library(Matrix)
+pbmc33k.data <- Read10X(data.dir = "/Users/adam/data_analysis/deconvolution/data/filtered_gene_bc_matrices/hg19/")
+pbmc33k  <- CreateSeuratObject(raw.data = pbmc33k.data, min.cells = 3, project = "10X_PBMC33K", names.field = 2, names.delim = "\\-")
+mito.genes <- grep(pattern = "^MT-", x = rownames(x = pbmc33k@data), value = TRUE)#
+percent.mito <- colSums(pbmc33k@data[mito.genes, ]) / colSums(pbmc33k@data)#
+pbmc33k <- AddMetaData(object = pbmc33k, metadata = percent.mito, col.name = "percent.mito")#
+VlnPlot(object = pbmc33k, features.plot = c("nGene", "nUMI", "percent.mito"), nCol = 3)
+pbmc33k <- FilterCells(object = pbmc33k, subset.names = c("nGene", "percent.mito"), low.thresholds = c(500, -Inf), high.thresholds = c(2500, 0.05))
+pbmc33k <- NormalizeData(object = pbmc33k)
+pbmc33k <- FindVariableGenes(object = pbmc33k, x.low.cutoff = 0, y.cutoff = 0.8)#
+length(x = pbmc33k@var.genes)
+pbmc33k <- ScaleData(object = pbmc33k, vars.to.regress = c("percent.mito", "orig.ident", "nUMI"), genes.use = pbmc33k@var.genes, model.use = "negbinom")
+pbmc33k <- RunPCA(object = pbmc33k, pc.genes = pbmc33k@var.genes, pcs.compute = 40, pcs.print = 1:30, maxit = 500, weight.by.var = FALSE)
+PCElbowPlot(object = pbmc33k, num.pc = 40)
+PrintPCA(object = pbmc33k, pcs.print = 1:36)
+PCHeatmap(object = pbmc33k, pc.use = 1:12,100)
+PCHeatmap(object = pbmc33k, pc.use = 13:24,100)
+PCHeatmap(object = pbmc33k, pc.use = 25:36,100)
+PCHeatmap(object = pbmc33k, pc.use = 13:24,100)
+pbmc33k <- RunTSNE(object = pbmc33k, dims.use = 1:25, do.fast = TRUE)
+pbmc33k <- FindClusters(object = pbmc33k, reduction.type = "pca", dims.use = 1:25, resolution = 4, save.SNN = TRUE)
+save(pbmc33k, file = "/Users/adam/data_analysis/deconvolution/data/pbmc33k_postclustering.Robj")
+pbmc33k <- SetAllIdent(object = pbmc33k, id = "res.2")
+TSNEPlot(object = pbmc33k, do.label = TRUE)
+pbmc33k <- FindClusters(object = pbmc33k, reduction.type = "pca", dims.use = 1:25, resolution = 4, save.SNN = TRUE)
+save(pbmc33k, file = "/Users/adam/data_analysis/deconvolution/data/pbmc33k_postclustering.Robj")
+pbmc33k <- SetAllIdent(object = pbmc33k, id = "res.2")#
+TSNEPlot(object = pbmc33k, do.label = TRUE)
+pbmc33k <- SetAllIdent(object = pbmc33k, id = "res.4")#
+TSNEPlot(object = pbmc33k, do.label = TRUE)
+pbmc33k <- SetAllIdent(object = pbmc33k, id = "res.4")#
+#
+# Build a classification hierarchy that places transcriptionally similar clusters adjacent on a tree#
+pbmc33k <- BuildClusterTree(object = pbmc33k, do.reorder = TRUE, reorder.numeric = TRUE)
+node.scores <- AssessNodes(object = pbmc33k)#
+node.scores[order(node.scores$oobe, decreasing = TRUE), ] -> node.scores
+nodes.merge <- node.scores[1:8, ]#
+nodes.to.merge <- sort(x = nodes.merge$node)#
+pbmc33k.merged <- pbmc33k#
+for (n in nodes.to.merge) {#
+  pbmc33k.merged <- MergeNode(object = pbmc33k.merged, node.use = n)#
+}
+pbmc33k.merged <- BuildClusterTree(object = pbmc33k.merged, do.reorder = TRUE, reorder.numeric = TRUE, genes.use = rownames(x = pbmc33k.merged@data))#
+TSNEPlot(object = pbmc33k.merged, do.label = TRUE)
+pbmc33k.merged <- BuildClusterTree(object = pbmc33k.merged, genes.use = rownames(x = pbmc33k.merged@data))
+save(pbmc33k.merged, file = "/Users/adam/data_analysis/deconvolution/data/pbmc33k_postmerge.Robj")
+PlotClusterTree(object = pbmc33k.merged)
+ColorTSNESplit(object = pbmc33k.merged, node = 33)
+ColorTSNESplit(object = pbmc33k.merged, node = 31, color1 = "red", color3 = "blue")
+ColorTSNESplit(object = pbmc33k.merged, node = 33)
+FeaturePlot(object = pbmc33k.merged, c("MS4A1", "GNLY","CD3E","CD8A","LYZ","PF4"), cols.use = c("lightgrey","blue"), nCol = 3)
+FindMarkersNode(object = pbmc33k.merged, node = 31, min.diff.pct = 0.25)
+DotPlot(#
+  object = pbmc33k.merged,#
+  genes.plot = c("CD3E", "CD8B", "SELL", "GNLY", "GZMA", "GZMB", "GZMH", "GZMK", "PRF1", "NKG7", "XCL2", "FGFBP2", "KLRC1"),#
+  cols.use = CustomPalette(low = "lightgrey",high = "blue"),#
+  cex.use = 2#
+)
+pbmc33k.downsampled <- SubsetData(object = pbmc33k.merged, max.cells.per.ident = 100)#
+markers <- FindAllMarkersNode(object = pbmc33k.downsampled, node = 31, max.cells.per.ident = 100)#
+HeatmapNode(pbmc33k.downsampled, node = 34, marker.list = markers, max.genes = 10)#
+FindMarkers(object = pbmc33k.downsampled, ident.1 = 17,  only.pos = TRUE)
+#rename cluster IDs#
+new_ids <- c(#
+  "Megakaryocyte","Mono_CD16+","Mono_CD16+_C1qa","Mono_Apobec3b","Mono_Apobec3a","Mono_CD14+_Antiviral","Mono_CD14+","Mono_CD14+_Inflam","DC_CD141+",#
+  "MonoT_Doublet","DC_CD1C+","NK_Prss57","NK","NK_XCL1","Multiplet","CD8Effector_GZMH","CD8Effector_GZMK","BCell_A","BCell_B","BCell_C","CD34+",#
+  "T_DoubleNeg","CD8_Memory","CD8_Naive","CD4_Naive","CD4_Memory_Antiviral","CD4_Memory_TIGIT","CD4_Memory","pDC","Plasma"#
+)
+current.cluster.ids <- 1:30#
+pbmc33k.merged@ident <- plyr::mapvalues(x = pbmc33k.merged@ident, from = current.cluster.ids, to = new_ids)
+current.cluster.ids <- 1:28#
+pbmc33k.merged@ident <- plyr::mapvalues(x = pbmc33k.merged@ident, from = current.cluster.ids, to = new_ids)
+dc.markers <- FindMarkers(object = pbmc33k.merged, ident.1 = "CD4_Memory_Antiviral", ident.2 = "CD4_Naive", test.use = "negbinom")
+warnings()
+TSNEPlot(object = pbmc33k.merged, do.label = TRUE)
+dc.markers
+nrows(dc.markers)
+nrow(dc.markers)
+summary(pbmc33k.merged)
+head(pbmc33k.merged)
+head(pbmc33k)
+summary(pbmc33k.merged)
+summary(pbmc33k)
+dc.markers <- FindMarkers(object = pbmc33k.merged, ident.1 = "CD4_Naive", test.use = "negbinom")
+warnings()
+nrow(dc.markers)
+dc.markers
+PlotClusterTree(object = pbmc33k.merged)
+current.cluster.ids
+pbmc33k.merged@ident
+pbmc33k.merged <- BuildClusterTree(object = pbmc33k.merged, genes.use = rownames(x = pbmc33k.merged@ident))
+PlotClusterTree(object = pbmc33k.merged)
+FindMarkersNode(object = pbmc33k.merged, node = 47, min.diff.pct = 0.25)
+FindMarkersNode(object = pbmc33k.merged, node = 54, min.diff.pct = 0.25)
+test <- FindMarkersNode(object = pbmc33k.merged, node = 54, min.diff.pct = 0.25)
+nrows(test)
+nrow(test)
+test
+dc.markers <- FindMarkers(object = pbmc33k.merged, ident.1 = "CD4_Memory_Antiviral", test.use = "negbinom") #i
+dc.markers
+nrows(dc.markers)
+nrow(dc.markers)
+R.Version()
+library("devtools")#
+library("roxygen2")#
+setwd("/Users/adam/GitHub/staRNA-Seq/R/DEVis/DEVis")
+library(DEVis)
+base_dir = "/Users/adam/data_analysis/JUL/Human/test/"#
+cnt_dir        <- "/Users/adam/data_analysis/JUL/Human/analysis/counts/"#
+tgt_dir        <- "/Users/adam/data_analysis/JUL/Human/analysis/targets/"#
+#
+#Gene name mapping table.#
+meta_file <- "/Users/adam/data_analysis/JUL/Human/analysis/counts/gene_id_map.txt"#
+#
+#Input files.#
+master_counts  = "JULH_master_counts_titer.txt"#
+master_targets = "JULH_master_targets_titer_csv.csv"#
+#
+base_name="test"#
+#
+#Create directory structure and read data.#
+init_cutoffs(0.01, 1.5)#
+create_dir_struct(base_dir)#
+set_output_mode("both")#
+init_data_paths(cnt_dir, tgt_dir)#
+#
+count_data  <- prep_counts(master_counts)#
+target_data <- prep_targets(master_targets, delim="c")#
+#
+#Remove the genes that bias strongly in favor of sex-specific differences.#
+toDrop = c("ENSG00000229807", "ENSG00000129824", "ENSG00000067048", "ENSG00000114374", "ENSG00000183878", "ENSG00000012817", "ENSG00000131002", #
+            "ENSG00000215580", "ENSG00000067646", "ENSG00000233864", "ENSG00000099725", "ENSG00000198692")#
+count_data = count_data[!(rownames(count_data) %in% toDrop),]#
+#Adjust the gene names from ensemble IDs to gene symbols.  This mapping comes from http://www.ensembl.org/biomart/, duplicates removed.#
+meta_file <- "/Users/adam/data_analysis/JUL/Human/analysis/counts/gene_id_map.txt"#
+count_data <- transpose_gene_ids(count_data, meta_file)#
+#Prep DESeq object and run DESeq.#
+dds <- prep_dds_from_data(count_data, target_data, ~ Time_Response, TRUE, "Replicate", "vst")#
+#
+dds <- DESeq(dds)#
+resultsNames(dds)#
+res.day0 <- results(dds, contrast=c("Time_Response", "day0_strong", "day0_weak")) #
+res.day1 <- results(dds, contrast=c("Time_Response", "day1_strong", "day0_weak")) #
+res.day2 <- results(dds, contrast=c("Time_Response", "day2_strong", "day0_weak")) #
+res.day3 <- results(dds, contrast=c("Time_Response", "day3_strong", "day0_weak")) #
+#
+result_list <- list(res.day0,res.day1,res.day2,res.day3)
+setwd("/Users/adam/GitHub/staRNA-Seq/R/DEVis/DEVis")
+document()
+build()
+install()
+base_dir = "/Users/adam/data_analysis/JUL/Human/test/"#
+cnt_dir        <- "/Users/adam/data_analysis/JUL/Human/analysis/counts/"#
+tgt_dir        <- "/Users/adam/data_analysis/JUL/Human/analysis/targets/"#
+#
+#Gene name mapping table.#
+meta_file <- "/Users/adam/data_analysis/JUL/Human/analysis/counts/gene_id_map.txt"#
+#
+#Input files.#
+master_counts  = "JULH_master_counts_titer.txt"#
+master_targets = "JULH_master_targets_titer_csv.csv"#
+#
+base_name="test"#
+#
+#Create directory structure and read data.#
+init_cutoffs(0.01, 1.5)#
+create_dir_struct(base_dir)#
+set_output_mode("both")#
+init_data_paths(cnt_dir, tgt_dir)#
+#
+count_data  <- prep_counts(master_counts)#
+target_data <- prep_targets(master_targets, delim="c")#
+#
+#Remove the genes that bias strongly in favor of sex-specific differences.#
+toDrop = c("ENSG00000229807", "ENSG00000129824", "ENSG00000067048", "ENSG00000114374", "ENSG00000183878", "ENSG00000012817", "ENSG00000131002", #
+            "ENSG00000215580", "ENSG00000067646", "ENSG00000233864", "ENSG00000099725", "ENSG00000198692")#
+count_data = count_data[!(rownames(count_data) %in% toDrop),]#
+#Adjust the gene names from ensemble IDs to gene symbols.  This mapping comes from http://www.ensembl.org/biomart/, duplicates removed.#
+meta_file <- "/Users/adam/data_analysis/JUL/Human/analysis/counts/gene_id_map.txt"#
+count_data <- transpose_gene_ids(count_data, meta_file)#
+#Prep DESeq object and run DESeq.#
+dds <- prep_dds_from_data(count_data, target_data, ~ Time_Response, TRUE, "Replicate", "vst")
+poisson_dist("Time_Response", "TEST.pdf", 2)
+library("devtools")#
+library("roxygen2")#
+setwd("/Users/adam/GitHub/staRNA-Seq/R/DEVis/DEVis")

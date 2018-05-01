@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#' An S4 class extending the DESeqResults object. Contains additional fields.\n#'\n#' @slot numDE Number of DE genes in the result set.\nsetClass(\"DESeqResMeta\",\n         slots = list(\n           numDE = \"numeric\",\n           numUp = \"numeric\",\n           numDown = \"numeric\",\n           allNames = \"character\",\n           upNames = \"character\",\n           downNames = \"character\",\n           case = \"character\",\n           control = \"character\",\n           contrast = \"character\",\n           design_field = \"character\"\n         ),\n\n         contains = \"DESeqResults\"\n)\n",
+    "created" : 1508425684495.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "171562352",
+    "id" : "D469D95F",
+    "lastKnownWriteTime" : 1508425868,
+    "last_content_update" : 1508425868698,
+    "path" : "~/GitHub/staRNA-Seq/R/DEVis/DEVis/R/classes.R",
+    "project_path" : "R/classes.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

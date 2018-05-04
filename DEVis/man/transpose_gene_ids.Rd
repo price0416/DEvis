@@ -19,7 +19,7 @@ This function returns a count data set with gene IDs replaced by those provided 
 This function accepts a 1-to-1 mapping file of gene ids and updates count data to reflect the new IDs.  The mapping file should contain
 two columns "Gene stable ID" and "Gene name".  The "Gene stable id" should correspond to gene ids in your count data file, and "gene name"
 will be used to replace the existing genes.  This function has can be used to translate difficult to understand gene identifiers, such as
-ensembl IDs to to more human readable gene names.  A mapping file can be generated at \url{http://www.ensembl.org/biomart/}.
+ensembl IDs to to more human readable gene names.  A mapping file can be generated at \url{http://www.ensembl.org/biomart/martview/}.
 This function should be run using count data read by prep_counts().  The returned data can then be used in prep_dds_from_data().
 }
 \examples{
@@ -36,7 +36,7 @@ dds <- prep_dds_from_data(new_count_data, target_data, ~ Design_Type, TRUE,
 }
 }
 \seealso{
-\url{http://www.ensembl.org/biomart/}, \code{\link{prep_counts}}, \code{\link{prep_dds_from_data}}
+\url{http://www.ensembl.org/biomart/martview/}, \code{\link{prep_counts}}, \code{\link{prep_dds_from_data}}
 }
 \keyword{id}
 \keyword{rename}

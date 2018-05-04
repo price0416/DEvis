@@ -26,7 +26,7 @@ For technical specifications, [see the DEvis manual](https://github.com/price041
 
 
 # Note to Reviewers:
-Thank you for reviewing our package.  Once we receive notification of acceptance we will submit this package to the CRAN repository.  Currently the package meets all standards for submission and acceptance to CRAN.
+Thank you for taking the time to review our package.  Once we receive notification of acceptance we will submit this package to the CRAN repository.  Currently the package meets all standards for submission and acceptance to CRAN.
 
 Once accepted to CRAN, installation will be simplified to:
 install.packages(DEVis)

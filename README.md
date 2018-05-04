@@ -2,6 +2,7 @@
 
 ## Installation:
 ### If using OS X, please ensure that you are using the most up to date version of xcode. 
+Instructions for [how to update xcode](https://stackoverflow.com/questions/15417619/how-do-you-update-xcode-on-osx-to-the-latest-version).
 ```
 #Install DESeq2 dependency from bioconductor.
 source("https://bioconductor.org/biocLite.R")

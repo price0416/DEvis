@@ -59,6 +59,26 @@ target_data <- prep_targets(target_matrix, delim="c")
 #Initialize output mode.  
 set_output_mode("screen")
 ```
+
+# Installation
+DEVis can be installed using the following commands.  This section will be updated after CRAN submission.
+```{r install, echo = TRUE, eval = FALSE}
+#Install DESeq2 dependency from bioconductor.
+source("https://bioconductor.org/biocLite.R")
+biocLite("DESeq2")
+
+#Install devtools to allow installation from GitHub
+if (!require("devtools")) install.packages("devtools")
+
+#Install DEvis from GitHub repository.
+devtools::install_github("price0416/DEvis/DEvis")
+
+#Load the package.
+library(DEVis)
+```
+* *Note: DEvis requires DESeq2 as a dependency. However, some of DESeq2's dependencies require that compilers such as gcc or gfortran be installed on your computer.  To address any issues with DESeq2 install, ensure that you have the latest version of xcode installed (OS X) or rtools (windows).*
+
+
 # Introduction
 The DEVis packakge is a comprehensive toolset for data aggregation, visual analytics, exploratory analysis, and project management that builds upon the DESeq2 differential expression package.  DEVis provides a framework for the analysis of multi-factor experiments, increasing the power and potential of differential expression analysis while reducing workload and potential for human error.  This package implements a wide range of data visualization tools, as well as data aggregation, transformation, and selection methods that smoothly integrate with the DESeq2, making extensive analysis and interpretation a more seamless process. DEVis also implements an automated result management system that automatically organizes and stores results, further simplifying the challenge of complex transcriptomic analysis and the creation of publication-quality figures.  The visualizations provided by DEVis incorporate parameters that can be used to provide control over the data being visualized in sensible ways, with each visualization offering several layout and color schemes, unique filtering, sorting, and subset parameters for displaying and retrieving data, making DEVis visualizations powerful functions for navigating and retrieving transcriptomic data within the context of a complex experiment, rather than just simple plots.  
 
@@ -555,8 +575,9 @@ Once DEVis analysis is complete, it is possible to export selected data of inter
 
 # References
 
-* 1. Olejnik, J., Forero, A., Deflubé, L. R., Hume, A. J., Manhart, W. A., Nishida, A., … Mühlberger, E. (2017). "Ebolaviruses Associated with Differential Pathogenicity Induce Distinct Host Responses in Human Macrophages." Journal of Virology, 91(11), e00179-17. https://doi.org/10.1128/JVI.00179-17
+* 1. Olejnik, J., Forero, A., Deflubé, L. R., Hume, A. J., Manhart, W. A., Nishida, A., … Mühlberger, E. (2017). "Ebolaviruses Associated with Differential Pathogenicity Induce Distinct Host Responses in Human Macrophages." Journal of Virology, 91(11), e00179-17.
 
+* 2.	Love, M. I., Huber, W., & Anders, S. (2014). Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2. Genome Biology, 15(12). 
 
 ```{r cleanFolders, echo = FALSE, eval = TRUE, results='hide', message=FALSE, warning=FALSE}
 

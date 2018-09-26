@@ -5,8 +5,8 @@
 \title{Visualize gene-wise expression of differentially expressed genes.}
 \usage{
 de_profile_plot(res_list, filename = "de_profile_plot.pdf",
-  sort_choice = "max", specific_genes = "", numGenes = 50, theme = 1,
-  customLabels = FALSE, returnData = FALSE)
+  sort_choice = "max", specific_genes = "", numGenes = 50,
+  theme = 1, customLabels = FALSE, returnData = FALSE)
 }
 \arguments{
 \item{res_list}{A list of DESeq result sets. Results can be calculated individually using DESeq's results() function.

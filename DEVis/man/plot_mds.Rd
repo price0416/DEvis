@@ -5,7 +5,8 @@
 \title{Visualize multi-dimensional scaled data for all samples, with group-wise metadata incorporated as colors and shapes.}
 \usage{
 plot_mds(filename = "mds_plot.pdf", color_var, shape_var = "none",
-  showConf = TRUE, theme = 1, customLabels = FALSE, returnData = FALSE)
+  showConf = TRUE, theme = 1, customLabels = FALSE,
+  returnData = FALSE)
 }
 \arguments{
 \item{filename}{Filename for output plot.  Valid extensions are ".pdf" and ".png".

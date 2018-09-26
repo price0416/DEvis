@@ -29,6 +29,7 @@
 #'       /heatmaps/
 #'       /profile_plots/
 #'       /series_plots/
+#'       /volcano/
 #'    /dendrograms/
 #'    /geneplots/
 #'    /group_stats/
@@ -72,6 +73,7 @@ create_dir_struct <- function(base_dir)
   DE_profile_dir <- paste(results_dir,"DE/profile_plots/", sep="")
   DE_density_dir <- paste(results_dir,"DE/density_plots/", sep="")
   DE_series_dir  <- paste(results_dir,"DE/series_plots/", sep="")
+  DE_volcano_dir <- paste(results_dir,"DE/volcano/", sep="")
   dendro_dir     <- paste(results_dir,"dendrograms/", sep="")
 
   #Save paths to the environment.
@@ -94,6 +96,7 @@ create_dir_struct <- function(base_dir)
   assign("DE_profile_dir", paste(results_dir,"DE/profile_plots/", sep=""), envir=.DEVis_env)
   assign("DE_density_dir", paste(results_dir,"DE/density_plots/", sep=""), envir=.DEVis_env)
   assign("DE_series_dir", paste(results_dir,"DE/series_plots/", sep=""), envir=.DEVis_env)
+  assign("DE_volcano_dir", paste(results_dir,"DE/volcano/", sep=""), envir=.DEVis_env)
   assign("dendro_dir", paste(results_dir,"dendrograms/", sep=""), envir=.DEVis_env)
 
 
@@ -118,6 +121,7 @@ create_dir_struct <- function(base_dir)
   dir.create(DE_density_dir, showWarnings = FALSE)
   dir.create(dendro_dir, showWarnings = FALSE)
   dir.create(DE_series_dir, showWarnings = FALSE)
+  dir.create(DE_volcano_dir, showWarnings = FALSE)
 
   setwd(.DEVis_env$working_dir)
 }

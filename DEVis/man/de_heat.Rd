@@ -5,9 +5,9 @@
 \title{Create heat maps of differentially expressed genes.}
 \usage{
 de_heat(res_list, filename = "heatmap.pdf", anno_columns,
-  sort_choice = "none", specific_genes = "", numGenes = 30, theme = 2,
-  cluster_genes = TRUE, cluster_contrasts = TRUE, customLabels = FALSE,
-  returnData = FALSE)
+  sort_choice = "none", specific_genes = "", numGenes = 30,
+  theme = 2, cluster_genes = TRUE, cluster_contrasts = TRUE,
+  customLabels = FALSE, returnData = FALSE)
 }
 \arguments{
 \item{res_list}{A list of DESeq result sets. Results can be calculated individually using DESeq's results() function.

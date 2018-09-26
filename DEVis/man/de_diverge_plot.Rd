@@ -4,8 +4,8 @@
 \alias{de_diverge_plot}
 \title{Visualize fold-change divergence for differentially expressed genes.}
 \usage{
-de_diverge_plot(res_list, filename = "de_divergence_plot.pdf", theme = 1,
-  customLabels = FALSE, returnData = FALSE)
+de_diverge_plot(res_list, filename = "de_divergence_plot.pdf",
+  theme = 1, customLabels = FALSE, returnData = FALSE)
 }
 \arguments{
 \item{res_list}{A list of DESeq result sets. Results can be calculated individually using DESeq's results() function.

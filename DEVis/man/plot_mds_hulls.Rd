@@ -6,8 +6,9 @@
 \usage{
 plot_mds_hulls(filename = "mds_hulls_plot.pdf", color_var,
   shape_var = "none", deOnly = FALSE, showLabel = FALSE,
-  hullType = "solid", exclude_data = FALSE, idCol = "", excludeCol = "",
-  excludeName = "", theme = 1, customLabels = FALSE, returnData = FALSE)
+  hullType = "solid", exclude_data = FALSE, idCol = "",
+  excludeCol = "", excludeName = "", theme = 1,
+  customLabels = FALSE, returnData = FALSE)
 }
 \arguments{
 \item{filename}{Filename for output plot.  Valid extensions are ".pdf" and ".png".

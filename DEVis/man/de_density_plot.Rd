@@ -4,8 +4,8 @@
 \alias{de_density_plot}
 \title{Vizualize density plots of fold-change or significance values for aggregated data sets.}
 \usage{
-de_density_plot(res_list, filename = "de_density_plot.pdf", type = "pval",
-  method = "union", returnData = FALSE)
+de_density_plot(res_list, filename = "de_density_plot.pdf",
+  type = "pval", method = "union", returnData = FALSE)
 }
 \arguments{
 \item{res_list}{A list of DESeq result sets. Results can be calculated individually using DESeq's results() function.

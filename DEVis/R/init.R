@@ -10,6 +10,7 @@
 #' @import plyr
 #' @import PoiClaClu
 #' @import reshape2
+#' @import gridExtra
 #' @importFrom SummarizedExperiment colData assay
 #' @importFrom grDevices chull colorRampPalette dev.off pdf png
 #' @importFrom stats cmdscale cutree dist hclust sd var

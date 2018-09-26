@@ -38,6 +38,7 @@ This command will create the following folders:
       /heatmaps/
       /profile_plots/
       /series_plots/
+      /volcano/
    /dendrograms/
    /geneplots/
    /group_stats/

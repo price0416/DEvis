@@ -4,8 +4,8 @@
 \alias{exclude_data_subset}
 \title{Select a subset of count and target data based on metadata annotation.}
 \usage{
-exclude_data_subset(counts, targets, target_count_id_map, target_exclude_col,
-  target_exclude_val)
+exclude_data_subset(counts, targets, target_count_id_map,
+  target_exclude_col, target_exclude_val)
 }
 \arguments{
 \item{counts}{Count data as prepared with prep_counts().}

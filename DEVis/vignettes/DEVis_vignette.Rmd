@@ -9,12 +9,27 @@ vignette: >
   %\VignetteIndexEntry{DEVis}
   %\usepackage[utf8]{inputenc}
   %\VignetteEngine{knitr::rmarkdown}
+header-includes: 
+- \usepackage{graphicx}
+- \usepackage{float}
 ---
 
 ```{r loadData, echo = F, eval = TRUE}
 #load("../data/exampleData.Rda")
 knitr::opts_knit$set(root.dir = '../vignettes/')
+knitr::opts_chunk$set(fig.path='figure/graphics-', 
+                 cache.path='cache/graphics-', 
+                 fig.align='center',
+                 external=TRUE,
+                 echo=TRUE,
+                 warning=FALSE,
+                 fig.pos='H'
+                )
+  a4width<- 8.3
+  a4height<- 11.7
+suppressWarnings({
 library(kableExtra)
+})
 library(knitr)
 options(knitr.table.format = "latex") 
 ```
@@ -184,6 +199,7 @@ The following directory structure is created using ~DEVis as a base directory:
 #'       /heatmaps/
 #'       /profile_plots/
 #'       /series_plots/
+#'       /volcano/
 #'    /dendrograms/
 #'    /geneplots/
 #'    /group_stats/
@@ -485,7 +501,14 @@ In some cases, examining the most extreme cases for up and down regulated genes 
 de_boxplot(result_list, filename="DE_boxplot.pdf", theme=2)
 ```
 
-Relative overall expression levels can also be visualized using the de_boxplot function. These plots together can give a picture of expression and allow you to make informed decisions about filtering and data selection.  For instance, based on these plots we may decide to further investigate the set of differentially expressed genes with a log fold-change of greater than 15.  Such a filtration would substantially reduce the size of the data set to a managable scale for further investigation.
+We can also examine the relationship between the significance of our DE genes and their expression change by examining volcano plots for each sample.
+```{r doDEVolcano, echo = TRUE, eval = TRUE, results='hide', message=FALSE, warning=FALSE, fig.height = 6, fig.width = 6, fig.align = "center"}
+de_volcano(result_list, filename="DE_volcano.pdf", theme=1, strict_scale=TRUE)
+```
+
+Here we can see that at the early timepoint there are not as significant changes in either the reston or ebola groups, however as the one and two day time points proceed, we can see that both expression and significance of DE genes increases dramatically compared to the reston virus cases at the same time points. This de_volcano() plot can also be used as a visualization for examining the effects of filtration.  By using the lfc_thresh parameter, it is possible to see the genes that will be selected when filtering by fold change or p-value.  
+
+Relative overall expression levels can also be visualized using the de_boxplot, de_diverge_plot, and de_volcano functions. These plots together can give a picture of expression and allow you to make informed decisions about filtering and data selection.  For instance, based on these plots we may decide to further investigate the set of differentially expressed genes with a log fold-change of greater than 15.  Such a filtration would substantially reduce the size of the data set to a managable scale for further investigation.
 
 ### Differences Between Genes
 

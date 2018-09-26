@@ -4,7 +4,8 @@
 \alias{get_de_data}
 \title{Aggregate and retrieve data from multiple differentially expressed result sets.}
 \usage{
-get_de_data(res_list, method = "union", type = "lfc", lfc_filter = FALSE)
+get_de_data(res_list, method = "union", type = "lfc",
+  lfc_filter = FALSE)
 }
 \arguments{
 \item{res_list}{A list of DESeq result sets created with DESeq2::results(). I.E: list(res1, res2, ..., resN).}

@@ -4,8 +4,8 @@
 \alias{de_counts}
 \title{Visualize differentially expressed gene counts as a stacked barplot.}
 \usage{
-de_counts(res_list, filename = "de_count_barplot.pdf", customLabels = FALSE,
-  theme = 1, returnData = FALSE)
+de_counts(res_list, filename = "de_count_barplot.pdf",
+  customLabels = FALSE, theme = 1, returnData = FALSE)
 }
 \arguments{
 \item{res_list}{A list of DESeq result sets created with DESeq2::results(). I.E: list(res1, res2, ..., resN).}

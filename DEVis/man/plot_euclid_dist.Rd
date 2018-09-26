@@ -4,8 +4,8 @@
 \alias{plot_euclid_dist}
 \title{Visualize the euclidian distances between samples.}
 \usage{
-plot_euclid_dist(row_labels, filename = "euclidian_distance.pdf", theme = 1,
-  returnData = FALSE)
+plot_euclid_dist(row_labels, filename = "euclidian_distance.pdf",
+  theme = 1, returnData = FALSE)
 }
 \arguments{
 \item{row_labels}{Row labels for samples. This value should correspond to a column in

@@ -4,8 +4,8 @@
 \alias{create_master_res}
 \title{Create a data set consisting of aggregated data for multiple contrasts.}
 \usage{
-create_master_res(res_list, filename = "master_DE.txt", method = "union",
-  lfc_filter = FALSE)
+create_master_res(res_list, filename = "master_DE.txt",
+  method = "union", lfc_filter = FALSE)
 }
 \arguments{
 \item{res_list}{A list of DESeq result sets created with DESeq2::results(). I.E: list(res1, res2, ..., resN).}

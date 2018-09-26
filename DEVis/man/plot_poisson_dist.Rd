@@ -4,8 +4,8 @@
 \alias{plot_poisson_dist}
 \title{Visualize the poisson distances between samples.}
 \usage{
-plot_poisson_dist(row_labels, filename = "poisson_distance.pdf", theme = 1,
-  returnData = FALSE)
+plot_poisson_dist(row_labels, filename = "poisson_distance.pdf",
+  theme = 1, returnData = FALSE)
 }
 \arguments{
 \item{row_labels}{Row labels for samples. This value should correspond to a column in

@@ -217,7 +217,7 @@ plot_mds <- function(filename="mds_plot.pdf", color_var, shape_var="none", showC
     theme(legend.text = element_text(size=12)) +
     theme(legend.title=element_blank()) +
     theme(axis.text=element_text(size=10, face="bold")) +
-    theme(text = element_text(size=12,margin = margin(t = 0, r = 10, b = 10, l = 0)))
+    theme(text = element_text(size=12,margin = margin(t = 0, r = 2, b = 1, l = 2)))
 
   #Create output file.
   setwd(.DEVis_env$MDS_dir)
@@ -643,7 +643,7 @@ plot_mds_hulls <- function(filename="mds_hulls_plot.pdf", color_var, shape_var="
     theme(axis.text.x = element_text(angle=90, hjust=1)) +
     theme(axis.text=element_text(size=12, face="bold")) +
     theme(legend.title=element_blank()) +
-    theme(text = element_text(size=12, margin = margin(t = 0, r = 10, b = 10, l = 0))) +
+    theme(text = element_text(size=12, margin = margin(t = 0, r = 2, b = 1, l = 2))) +
     labs(x="Dimension 1", y="Dimension 2") +
     guides(colour = guide_legend(override.aes = list(size=1, alpha = 1)))
 

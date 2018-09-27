@@ -489,7 +489,7 @@ Now that our DE gene data are prepared, we can start to examine the differences 
 ### Differences Between Conditions
 First, let's look at how expression levels for DE genes change over time.  To do that, we can use the de_diverge_plot function.
 
-```{r doDiverge, echo = TRUE, eval = TRUE, results='hide', message=FALSE, warning=FALSE, fig.height = 5, fig.width = 5, fig.align = "center"}
+```{r doDiverge, echo = TRUE, eval = TRUE, results='hide', message=FALSE, warning=FALSE, fig.height = 6, fig.width = 6, fig.align = "center"}
 de_diverge_plot(result_list, filename="DE_diverge.pdf", theme=1)
 ```
 
@@ -498,7 +498,7 @@ We can see here that for both ebola and reston virus cases that most differentia
 In some cases, examining the most extreme cases for up and down regulated genes may shed light on the biological mechanisms or gene networks involved underlying the infection.  In these cases, the de_filter function can be used to select genes using logical expresisons.  The de_filter function allows you to filter an aggregated master result to only contain genes with fold-changes less than or greater than a specified threshold for a given metric. Several metrics are provided for flexibility of selection. The use of metrics in this function makes it possible to ask questions such as, "which genes have a mean fold-change of at least 2?", "which genes have a fold change of less than 5?", or "which genes have fold-change with a variance across all conditions of at least 10?"  For more information, see ?de_filter.  
 
 ```{r doDEBox, echo = TRUE, eval = TRUE, results='hide', message=FALSE, warning=FALSE, fig.height = 6, fig.width = 6, fig.align = "center"}
-de_boxplot(result_list, filename="DE_boxplot.pdf", theme=2)
+de_boxplot(result_list, filename="DE_boxplot.pdf", theme=4)
 ```
 
 We can also examine the relationship between the significance of our DE genes and their expression change by examining volcano plots for each sample.
@@ -557,7 +557,7 @@ This supports the hypothesis of this study that reston virus is non-pathogenic i
 Let's take a look at the IL29 gene as a function of the different treatment/time groups using the plot_gene function.
 ```{r doGenePlot, echo = TRUE, eval = TRUE, results='hide', message=FALSE, warning=FALSE, fig.height = 7, fig.width = 7, fig.align = "center"}
 plot_gene(filename="IL29.pdf", gene_name="IL29", 
-          groupBy="time_treatment", theme=2)
+          groupBy="time_treatment", theme=4)
 ```
 Here we can see that the ebola treated samples show strong expression at the day 1 and day 2 time points, whereas all other samples show no expression for this gene. In combination with what we know about the IL29 gene itself, this finding supports the hypothesis of the study that reston virus is not pathogenic in humans.  
 

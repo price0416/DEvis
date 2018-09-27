@@ -162,7 +162,7 @@ plot_gene <- function(filename="gene_plot.pdf", gene_name, groupBy, theme=1, ret
   plot_out <- plot_out +
               theme(legend.title = element_blank()) +
               theme(legend.text = element_text(size=12)) +
-              theme(text = element_text(size=16,margin = margin(t = 0, r = 10, b = 10, l = 0))) +
+              theme(text = element_text(size=16,margin = margin(t = 0, r = 2, b = 1, l = 2))) +
               theme(axis.text.x = element_text(angle = 45, hjust = 1), plot.title = element_text(size=16, face="bold",hjust = 0))
 
 
@@ -352,7 +352,7 @@ plot_group_stats <- function(filename="group_stats_plot.pdf", id_field, groupBy,
               theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
               theme(legend.text = element_text(size=12)) +
               theme(axis.text = element_text(size=12, face="bold")) +
-              theme(text = element_text(size=16,margin = margin(t = 0, r = 10, b = 0, l = 0))) +
+              theme(text = element_text(size=16,margin = margin(t = 0, r = 2, b = 1, l = 2))) +
               labs(x="", y="log(Expression)") +
               theme(legend.title=element_blank())
 
@@ -522,7 +522,7 @@ de_boxplot <- function(res_list, filename="de_boxplot.pdf", theme=1, returnData=
               theme(legend.text = element_text(size=14)) +
               theme(legend.title=element_blank()) +
               theme(axis.text=element_text(size=14, face="bold")) +
-              theme(text = element_text(size=22,margin = margin(t = 0, r = 10, b = 0, l = 0))) +
+              theme(text = element_text(size=22,margin = margin(t = 0, r = 2, b = 1, l = 2))) +
               labs(x="", y="Log2 Fold-Change") +
               theme(legend.title=element_blank())
 

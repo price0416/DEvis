@@ -37,8 +37,9 @@ genes in a result set.
 \examples{
 \dontrun{
 
-#Make a volcano plot highlighting DE genes above 1.5 LFC threshold for all samples in result_list.
-de_volcano(result_list, filename="volcano.pdf", lfc_thresh=1.5, strict_scale=FALSE, theme=2, returnData=FALSE)
+#Make a volcano plot highlighting DE genes above 1.5 LFC threshold.
+de_volcano(result_list, filename="volcano.pdf", lfc_thresh=1.5, 
+           strict_scale=TRUE, theme=1, returnData=FALSE)
 
 }
 }

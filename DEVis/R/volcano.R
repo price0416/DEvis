@@ -19,8 +19,9 @@
 #' @examples
 #' \dontrun{
 #'
-#' #Make a volcano plot highlighting DE genes above 1.5 LFC threshold for all samples in result_list.
-#' de_volcano(result_list, filename="volcano.pdf", lfc_thresh=1.5, strict_scale=FALSE, theme=2, returnData=FALSE)
+#' #Make a volcano plot highlighting DE genes above 1.5 LFC threshold.
+#' de_volcano(result_list, filename="volcano.pdf", lfc_thresh=1.5, 
+#'            strict_scale=TRUE, theme=1, returnData=FALSE)
 #'
 #' }
 de_volcano <- function(res_list, filename="volcano_plot.pdf", lfc_thresh=-1, strict_scale=TRUE, num_columns=3, theme=1, returnData=FALSE)
@@ -140,6 +141,7 @@ de_volcano <- function(res_list, filename="volcano_plot.pdf", lfc_thresh=-1, str
     eval(parse(text = sub1))
     sub1 <- paste("max_y = max(abs(cur_df$",curLab,".padj), max_y)", sep="")
     eval(parse(text = sub1))
+    cur_x = 0
     if(strict_scale == FALSE)
     {
       sub1 <- paste("cur_x = max(abs(cur_df$",curLab,".lfc))", sep="")
@@ -148,6 +150,7 @@ de_volcano <- function(res_list, filename="volcano_plot.pdf", lfc_thresh=-1, str
     }
                       
     #Identify the LFC threshold for coloring points for each gene.
+    threshold = c()
     sub1 <- paste("threshold = ifelse(cur_df$\"",curLab,".lfc\" >= ", as.character(lfc_thresh), ", 'A', ifelse(cur_df$\"",curLab,".lfc\" <= -", as.character(lfc_thresh),", 'A', 'B'))", sep="")
     eval(parse(text = sub1))
     cur_df$thresh = threshold    
@@ -163,7 +166,7 @@ de_volcano <- function(res_list, filename="volcano_plot.pdf", lfc_thresh=-1, str
     #Keep track of things if they are requesting the data be returned.
     if(returnData == TRUE)
     {
-      return_data[i] = curData
+      return_data[i] = cur_df
     }
   }
 
@@ -277,6 +280,6 @@ de_volcano <- function(res_list, filename="volcano_plot.pdf", lfc_thresh=-1, str
   #Handle returning data if user requests.
   if(returnData)
   {
-    return(master_subset)
+    return(return_data)
   }
 }

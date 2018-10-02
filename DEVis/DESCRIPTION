@@ -1,7 +1,7 @@
 Package: DEVis
 Type: Package
 Title: A Differential Expression Analysis Toolkit for Visual Analytics and Data Aggregation
-Version: 0.99.0
+Version: 1.0.0
 Author: Adam Price
 Maintainer: Adam Price <ap3637@cumc.columbia.edu>
 Description: Differential expression analysis tools for data aggregation, visualization, exploratory analysis, and project organization. 

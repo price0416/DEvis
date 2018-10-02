@@ -2,5 +2,6 @@ language: r
 r: bioc-devel
 use_bioc: true
 NOT_CRAN=false
-bioc_packages: DESeq2, SummarizedExperiment
+bioc_packages: DESeq2
+bioc_packages: SummarizedExperiment
 before_install: cd DEVis

@@ -1,2 +1,4 @@
 language: r
-
+r: bioc-devel
+bioc_packages: DESeq2, SummarizedExperiment
+before_install: cd DEVis

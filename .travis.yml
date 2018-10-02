@@ -1,4 +1,6 @@
 language: r
 r: bioc-devel
+use_bioc: true
+NOT_CRAN=false
 bioc_packages: DESeq2, SummarizedExperiment
 before_install: cd DEVis

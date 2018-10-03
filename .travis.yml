@@ -9,4 +9,3 @@ before_install:
   - sudo apt-get install texlive-luatex
   - sudo apt-get install lmodern
   - sudo apt-get install texlive-fonts-recommended
-  - sudo tlmgr install luaotfload

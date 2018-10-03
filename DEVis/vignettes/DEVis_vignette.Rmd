@@ -2,9 +2,7 @@
 title: "Differential Expression Analysis with DEVis"
 output: 
   pdf_document: 
-    latex_engine: lualatex
-    toc: true
-    toc_depth: 3
+    toc: yes
 vignette: >
   %\VignetteIndexEntry{DEVis}
   %\usepackage[utf8]{inputenc}

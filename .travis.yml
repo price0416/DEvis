@@ -1,5 +1,6 @@
 language: r
 r: bioc-devel
 use_bioc: true
+r_check_args: "--no-vignettes"
 bioc_packages: DESeq2
 before_install: cd DEVis

@@ -6,3 +6,5 @@ bioc_packages: DESeq2
 before_install: 
   - cd DEVis
   - sudo apt-get install -y ghostscript
+  - sudo apt-get install texlive-luatex
+  - sudo apt-get install lmodern

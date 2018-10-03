@@ -484,7 +484,7 @@ de_boxplot <- function(res_list, filename="de_boxplot.pdf", theme=1, returnData=
   value    = NULL
   variable = NULL
 
-  plot_out <- ggplot(filteredList, aes(x=variable,y=value,fill=variable)) + geom_boxplot() + scale_y_continuous(name = "Log2 Fold-Change") + theme(legend.title = element_blank()) + theme(legend.text = element_text(size=6)) + theme(axis.text.x = element_text(angle = 45, hjust = 1), plot.title = element_text(size=16, face="bold"))
+  plot_out <- ggplot(filteredList, aes(x=variable,y=value,fill=variable)) + geom_boxplot() + scale_y_discrete(name = "Log2 Fold-Change") + theme(legend.title = element_blank()) + theme(legend.text = element_text(size=6)) + theme(axis.text.x = element_text(angle = 45, hjust = 1), plot.title = element_text(size=16, face="bold"))
 
   #Apply the selected theme.
   if(theme == 1)

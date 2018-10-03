@@ -8,3 +8,5 @@ before_install:
   - sudo apt-get install -y ghostscript
   - sudo apt-get install texlive-luatex
   - sudo apt-get install lmodern
+  - sudo apt-get install luaotfload
+  - sudo apt-get install texlive-fonts-recommended

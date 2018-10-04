@@ -116,43 +116,43 @@ de_diverge_plot <- function(res_list, filename="de_divergence_plot.pdf", theme=1
   plot_out <- ggplot(filteredList, aes(x=value, y=factor(variable, levels=as.character(unique(variable)), ordered=TRUE), label=variable, colour=variable)) + geom_point(stat='identity', aes(col=variable), size=3)
 
   #Apply the selected theme.
-  if(theme == 1)
-  {
-   # stata_long_pal = c(stata_pal("s2color")(15), stata_pal("s1rcolor")(15))
-   # plot_out <- plot_out + theme_stata() + scale_fill_manual(values=stata_long_pal) + theme(axis.text.y = element_text(angle = 45, hjust = 1), plot.title = element_text(size=14, face="bold", hjust=0)) + guides(col=guide_legend(ncol=length(enrich)%/%3))
-    print("hi")
-  }
-  if(theme == 2)
-  {
-    nature_pal = c(pal_npg("nrc")(10),pal_npg("nrc", alpha = 0.6)(10),pal_npg("nrc", alpha = 0.3)(10) )
-    plot_out <- plot_out + theme_igray() + scale_fill_manual(values=nature_pal) + guides(col=guide_legend(ncol=length(enrich)%/%3))
-  }
-  if(theme == 3)
-  {
-    tron_pal = c(pal_tron("legacy")(7),pal_tron("legacy", alpha = 0.7)(7),pal_tron("legacy", alpha = 0.5)(7),pal_tron("legacy", alpha = 0.3)(7),pal_tron("legacy", alpha = 0.2)(2))
-    plot_out <- plot_out + theme_hc(bgcolor = "darkunica") + theme(axis.text.x = element_text(colour = "white"), axis.text.y = element_text(colour = "white")) + scale_fill_manual(values=tron_pal) + guides(col=guide_legend(ncol=length(enrich)%/%3))
-  }
-  if(theme == 4)
-  {
-    gdoc_pal <- c(pal_ucscgb("default")(26), pal_ucscgb("default",alpha=.5)(4))
-    plot_out <- plot_out + theme_gdocs() + scale_fill_manual(values=gdoc_pal) + guides(col=guide_legend(ncol=length(enrich)%/%3))
-  }
-  if(theme == 5)
-  {
-    d3_pal <- c(pal_d3("category20")(20), pal_d3("category10",alpha=.5)(10))
-    plot_out <- plot_out + theme_solarized() + scale_fill_manual(values=d3_pal) + guides(col=guide_legend(ncol=length(enrich)%/%3))
-  }
-  if(theme == 6)
-  {
-    plot_out <- plot_out + theme_bw() + scale_colour_grey(start = 0, end = .9) + scale_fill_grey(start = 0, end = .9) + guides(col=guide_legend(ncol=length(enrich)%/%3))
-  }
-
-  plot_out <- plot_out +
-              theme(legend.text = element_text(size=12)) +
-              theme(legend.title=element_blank()) +
-              theme(axis.text=element_text(size=12, face="bold")) +
-              theme(text = element_text(size=22,margin = margin(t = 0, r = 10, b = 0, l = 0))) +
-              labs(x="", y="", title="Differentially Expressed Genes", subtitle="Log2 Fold-Change")
+  # if(theme == 1)
+  # {
+  #  # stata_long_pal = c(stata_pal("s2color")(15), stata_pal("s1rcolor")(15))
+  #  # plot_out <- plot_out + theme_stata() + scale_fill_manual(values=stata_long_pal) + theme(axis.text.y = element_text(angle = 45, hjust = 1), plot.title = element_text(size=14, face="bold", hjust=0)) + guides(col=guide_legend(ncol=length(enrich)%/%3))
+  #   
+  # }
+  # if(theme == 2)
+  # {
+  #   nature_pal = c(pal_npg("nrc")(10),pal_npg("nrc", alpha = 0.6)(10),pal_npg("nrc", alpha = 0.3)(10) )
+  #   plot_out <- plot_out + theme_igray() + scale_fill_manual(values=nature_pal) + guides(col=guide_legend(ncol=length(enrich)%/%3))
+  # }
+  # if(theme == 3)
+  # {
+  #   tron_pal = c(pal_tron("legacy")(7),pal_tron("legacy", alpha = 0.7)(7),pal_tron("legacy", alpha = 0.5)(7),pal_tron("legacy", alpha = 0.3)(7),pal_tron("legacy", alpha = 0.2)(2))
+  #   plot_out <- plot_out + theme_hc(bgcolor = "darkunica") + theme(axis.text.x = element_text(colour = "white"), axis.text.y = element_text(colour = "white")) + scale_fill_manual(values=tron_pal) + guides(col=guide_legend(ncol=length(enrich)%/%3))
+  # }
+  # if(theme == 4)
+  # {
+  #   gdoc_pal <- c(pal_ucscgb("default")(26), pal_ucscgb("default",alpha=.5)(4))
+  #   plot_out <- plot_out + theme_gdocs() + scale_fill_manual(values=gdoc_pal) + guides(col=guide_legend(ncol=length(enrich)%/%3))
+  # }
+  # if(theme == 5)
+  # {
+  #   d3_pal <- c(pal_d3("category20")(20), pal_d3("category10",alpha=.5)(10))
+  #   plot_out <- plot_out + theme_solarized() + scale_fill_manual(values=d3_pal) + guides(col=guide_legend(ncol=length(enrich)%/%3))
+  # }
+  # if(theme == 6)
+  # {
+  #   plot_out <- plot_out + theme_bw() + scale_colour_grey(start = 0, end = .9) + scale_fill_grey(start = 0, end = .9) + guides(col=guide_legend(ncol=length(enrich)%/%3))
+  # }
+  # 
+  # plot_out <- plot_out +
+  #             theme(legend.text = element_text(size=12)) +
+  #             theme(legend.title=element_blank()) +
+  #             theme(axis.text=element_text(size=12, face="bold")) +
+  #             theme(text = element_text(size=22,margin = margin(t = 0, r = 10, b = 0, l = 0))) +
+  #             labs(x="", y="", title="Differentially Expressed Genes", subtitle="Log2 Fold-Change")
 
   #Write the plot to file.
   setwd(.DEVis_env$DE_diverge_dir)

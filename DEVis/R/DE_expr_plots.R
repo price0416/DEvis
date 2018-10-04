@@ -113,13 +113,14 @@ de_diverge_plot <- function(res_list, filename="de_divergence_plot.pdf", theme=1
   }
 
   #Prepare plot.
-  plot_out <- ggplot(filteredList, aes(x=value, y=factor(variable, levels=as.character(unique(variable)), ordered=TRUE), label=variable, col=variable)) + geom_point(stat='identity', aes(col=variable), size=3)
+  plot_out <- ggplot(filteredList, aes(x=value, y=factor(variable, levels=as.character(unique(variable)), ordered=TRUE), label=variable, colour=variable)) + geom_point(stat='identity', aes(col=variable), size=3)
 
   #Apply the selected theme.
   if(theme == 1)
   {
-    stata_long_pal = c(stata_pal("s2color")(15), stata_pal("s1rcolor")(15))
-    plot_out <- plot_out + theme_stata() + scale_fill_manual(values=stata_long_pal) + theme(axis.text.y = element_text(angle = 45, hjust = 1), plot.title = element_text(size=14, face="bold", hjust=0)) + guides(col=guide_legend(ncol=length(enrich)%/%3))
+   # stata_long_pal = c(stata_pal("s2color")(15), stata_pal("s1rcolor")(15))
+   # plot_out <- plot_out + theme_stata() + scale_fill_manual(values=stata_long_pal) + theme(axis.text.y = element_text(angle = 45, hjust = 1), plot.title = element_text(size=14, face="bold", hjust=0)) + guides(col=guide_legend(ncol=length(enrich)%/%3))
+    print("hi")
   }
   if(theme == 2)
   {

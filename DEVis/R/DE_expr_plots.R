@@ -113,7 +113,7 @@ de_diverge_plot <- function(res_list, filename="de_divergence_plot.pdf", theme=1
   }
 
   #Prepare plot.
-  plot_out <- ggplot(filteredList, aes(x=value, y=factor(variable, levels=as.character(unique(variable)), ordered=TRUE), label=variable, colour=variable)) + geom_point(stat='identity', aes(col=variable), size=3)
+  plot_out <- ggplot(filteredList, aes(x=value, y=factor(variable, levels=as.character(unique(variable)), ordered=TRUE), label=variable)) + geom_point(stat='identity', aes(colour=factor(variable)), size=3)
 
   #Apply the selected theme.
   # if(theme == 1)

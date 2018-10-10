@@ -487,7 +487,7 @@ Now that our DE gene data are prepared, we can start to examine the differences 
 ### Differences Between Conditions
 First, let's look at how expression levels for DE genes change over time.  To do that, we can use the de_diverge_plot function.
 
-```{r doDiverge, echo = TRUE, eval = TRUE, results='hide', message=FALSE, warning=FALSE, fig.height = 6, fig.width = 6, fig.align = "center"}
+```{r doDiverge, echo = TRUE, eval = FALSE, results='hide', message=FALSE, warning=FALSE, fig.height = 6, fig.width = 6, fig.align = "center"}
 de_diverge_plot(result_list, filename="DE_diverge.pdf", theme=1)
 ```
 

@@ -131,12 +131,12 @@ create_dir_struct <- function(base_dir)
 #'
 #' This function initializes the paths to folders containing count and target data.  This package
 #' assumes correspondence between count data column names and target data row names.  In this package,
-#' metadata files are refered to as target data.
+#' metadata files are referred to as target data.
 #' Initialization by this function is required by most functions.
 #' @param count_path Path to directory containing count data. Count data is assumed to be tab-delimited text
 #' represent raw expression counts for each gene, with samples indicated by column and genes identified by row.
 #' Column names in count data must correspond to row names in target files.
-#' @param target_path Path to directory containing target data. Target data can be tab-delimited or comma-seperated text.
+#' @param target_path Path to directory containing target data. Target data can be tab-delimited or comma-separated text.
 #' Target rownames must correspond to count column names.  Additionally, any data can be included in target files to
 #' represent experimental conditions or additional metadata for the project.
 #' @return This function does not return a value.

@@ -19,7 +19,7 @@ Any column of metadata can be used, regardless of experimental design.}
 \item{shape_var}{The group from target data that should be indicated by shape.
 Any column of metadata can be used, regardless of experimental design. (Optional). Default="none".}
 
-\item{showConf}{Boolean.  Draw an elipsis representing the 95 percent confidence interval around each group. Default: TRUE}
+\item{showConf}{Boolean.  Draw an ellipsis representing the 95 percent confidence interval around each group. Default: TRUE}
 
 \item{theme}{Theme for the layout and color scheme for the MDS plot.  Valid selections are integers between 1-6.}
 

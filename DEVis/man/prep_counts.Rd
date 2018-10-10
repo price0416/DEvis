@@ -10,7 +10,7 @@ prep_counts(count_input, delim = "t")
 \item{count_input}{Count data in tab-delimited or comma-delimited (CSV) format, assumes headers exist for each column.
 Note that column names in the input count file must match row names in the input target metadata file.}
 
-\item{delim}{Indicate if file is comma or tab delimited.  "t" indicated tab delimited and "c" indicates comma seperated data.  Default: "t"}
+\item{delim}{Indicate if file is comma or tab delimited.  "t" indicated tab delimited and "c" indicates comma separated data.  Default: "t"}
 }
 \value{
 This function will return a properly formatted count data table based on a provided input file.

@@ -11,7 +11,7 @@ init_data_paths(count_path, target_path)
 represent raw expression counts for each gene, with samples indicated by column and genes identified by row.
 Column names in count data must correspond to row names in target files.}
 
-\item{target_path}{Path to directory containing target data. Target data can be tab-delimited or comma-seperated text.
+\item{target_path}{Path to directory containing target data. Target data can be tab-delimited or comma-separated text.
 Target rownames must correspond to count column names.  Additionally, any data can be included in target files to
 represent experimental conditions or additional metadata for the project.}
 }
@@ -21,7 +21,7 @@ This function does not return a value.
 \description{
 This function initializes the paths to folders containing count and target data.  This package
 assumes correspondence between count data column names and target data row names.  In this package,
-metadata files are refered to as target data.
+metadata files are referred to as target data.
 Initialization by this function is required by most functions.
 }
 \examples{

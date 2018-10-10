@@ -10,7 +10,7 @@
 #' @param theme Theme for the layout and color scheme for the plot.  Valid selections are integers between 1-6.
 #' @param returnData Boolean.  Determines if this visualization should return data used to generate the visualization. Default=FALSE.
 #' @return If returnData is true, this function will return the long-form table for differentially expressed genes
-#' containing gene names, catagorical variable, and expression values.
+#' containing gene names, categorical variable, and expression values.
 #' @keywords DE fold-change expression visualization
 #' @export
 #' @examples
@@ -907,7 +907,7 @@ de_profile_plot <- function(res_list, filename="de_profile_plot.pdf", sort_choic
 }
 
 
-#' Vizualize density plots of fold-change or significance values for aggregated data sets.
+#' Visualize density plots of fold-change or significance values for aggregated data sets.
 #'
 #' This function plots log2 fold-change or adjusted p-values for all differentially expressed genes for each contrast in
 #' a result set.  Data aggregation across a series of result sets entails that not every gene in an aggregated data

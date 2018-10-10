@@ -2,7 +2,7 @@
 % Please edit documentation in R/distance_plots.R
 \name{plot_euclid_dist}
 \alias{plot_euclid_dist}
-\title{Visualize the euclidian distances between samples.}
+\title{Visualize the Euclidian distances between samples.}
 \usage{
 plot_euclid_dist(row_labels, filename = "euclidian_distance.pdf",
   theme = 1, returnData = FALSE)
@@ -26,7 +26,7 @@ If returnData is true, this function will return the sample distance matrix of
 euclidian distance measurements between samples.
 }
 \description{
-This function computes and plots sample euclidian distances in a symmetrical heatmap. This visualization
+This function computes and plots sample Euclidian distances in a symmetrical heatmap. This visualization
 can be used to examine overall similarity between samples and whether or not data are
 behaving as expected based on the experimental design.  This view can also be used to
 identify potential outlying samples.
@@ -34,11 +34,11 @@ identify potential outlying samples.
 \examples{
 \dontrun{
 
-#Visualize euclidian distances of all samples using "SampleID" target data as labels.
+#Visualize Euclidian distances of all samples using "SampleID" target data as labels.
 plot_euclid_dist("SampleID", filename="euclidian_distance.pdf",
                    theme=2, returnData=FALSE)
 
-#Visualize euclidian distances of all samples using "timepoint" target data as labels.
+#Visualize Euclidian distances of all samples using "timepoint" target data as labels.
 #Store the resulting distance matrix data.
 distMatrix <- plot_euclid_dist("timepoint", filename="euclidian_distance.pdf",
                                  theme=2, returnData=TRUE)
@@ -48,8 +48,8 @@ distMatrix <- plot_euclid_dist("timepoint", filename="euclidian_distance.pdf",
 \seealso{
 \code{\link{plot_poisson_dist}}
 }
+\keyword{Euclidian}
 \keyword{batch}
 \keyword{cluster}
 \keyword{distance}
-\keyword{euclidian}
 \keyword{outlier}

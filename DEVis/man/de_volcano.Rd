@@ -28,7 +28,7 @@ vary depending on the dispersion of the volcano plot for each individual sample.
 }
 \value{
 If returnData is true, this function will return the long-form table of expression containing sample names,
-catagorical grouping, and sample IDs.
+categorical grouping, and sample IDs.
 }
 \description{
 This function generates a volcano plot that displays the relation between expression and p-value for all DE

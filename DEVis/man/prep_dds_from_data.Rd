@@ -11,7 +11,7 @@ prep_dds_from_data(count_input, target_input, experiment_design,
 \arguments{
 \item{count_input}{Count data in dataframe format as read with prep_counts().  Column names must correspond to target rownames.}
 
-\item{target_input}{Target data in dataframe formatas read with prep_targets().  Row names must correspond to count column names.}
+\item{target_input}{Target data in dataframe format as read with prep_targets().  Row names must correspond to count column names.}
 
 \item{experiment_design}{Experimental design for DE comparison.  Can include multiple factors.  Design factors should correspond to column names
 in the provided targets file.  Include the primary factor as the final factor in the design and any secondary or batch effects prior.

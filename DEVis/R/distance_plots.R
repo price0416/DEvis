@@ -1,6 +1,6 @@
-#' Visualize the euclidian distances between samples.
+#' Visualize the Euclidian distances between samples.
 #'
-#' This function computes and plots sample euclidian distances in a symmetrical heatmap. This visualization
+#' This function computes and plots sample Euclidian distances in a symmetrical heatmap. This visualization
 #' can be used to examine overall similarity between samples and whether or not data are
 #' behaving as expected based on the experimental design.  This view can also be used to
 #' identify potential outlying samples.
@@ -15,17 +15,17 @@
 #' @param returnData Boolean.  Determines if this visualization should return data used to generate the visualization. Default=FALSE.
 #' @return If returnData is true, this function will return the sample distance matrix of
 #' euclidian distance measurements between samples.
-#' @keywords distance cluster euclidian batch outlier
+#' @keywords distance cluster Euclidian batch outlier
 #' @seealso \code{\link{plot_poisson_dist}}
 #' @export
 #' @examples
 #' \dontrun{
 #'
-#' #Visualize euclidian distances of all samples using "SampleID" target data as labels.
+#' #Visualize Euclidian distances of all samples using "SampleID" target data as labels.
 #' plot_euclid_dist("SampleID", filename="euclidian_distance.pdf",
 #'                    theme=2, returnData=FALSE)
 #'
-#' #Visualize euclidian distances of all samples using "timepoint" target data as labels.
+#' #Visualize Euclidian distances of all samples using "timepoint" target data as labels.
 #' #Store the resulting distance matrix data.
 #' distMatrix <- plot_euclid_dist("timepoint", filename="euclidian_distance.pdf",
 #'                                  theme=2, returnData=TRUE)
@@ -167,7 +167,7 @@ plot_euclid_dist <- function(row_labels, filename="euclidian_distance.pdf", them
 #'
 #' This function computes and plots sample poisson distances in a symmetrical heatmap. This visualization
 #' can be used to examine overall similarity between samples and whether or not data are
-#' behaving as expected based on the experimental design.  Unlike euclidian distance, poisson distance
+#' behaving as expected based on the experimental design.  Unlike Euclidian distance, poisson distance
 #' calculation takes into account variation between sample counts when calculating distances.
 #' This view can also be used to identify potential outlying samples.
 #' @param row_labels Row labels for samples. This value should correspond to a column in
@@ -187,10 +187,10 @@ plot_euclid_dist <- function(row_labels, filename="euclidian_distance.pdf", them
 #' @examples
 #' \dontrun{
 #'
-#' #Visualize euclidian distances of all samples using "SampleID" target data as labels.
+#' #Visualize Euclidian distances of all samples using "SampleID" target data as labels.
 #' plot_poisson_dist("SampleID", filename="poisson_distance.pdf", theme=2, returnData=FALSE)
 #'
-#' #Visualize euclidian distances of all samples using "timepoint" target data as labels.
+#' #Visualize Euclidian distances of all samples using "timepoint" target data as labels.
 #' #Store the resulting distance matrix data.
 #' distMatrix <- plot_poisson_dist("timepoint", filename="poisson_distance.pdf",
 #'                                  theme=2, returnData=TRUE)

@@ -23,12 +23,12 @@ between the two groups and the p-value will be displayed on the plot as well.}
 }
 \value{
 If returnData is true, this function will return the long-form table of expression containing sample names,
-catagorical grouping, and sample IDs.
+categorical grouping, and sample IDs.
 }
 \description{
 This function generates a box plot to display the expression of an individual gene with regard to a
 specified grouping that can be based on any data that exists in the targets file. For example, a plot could
-be created to view the expression of a gene as a function of different time points or experimental conditons.
+be created to view the expression of a gene as a function of different time points or experimental conditions.
 }
 \examples{
 \dontrun{

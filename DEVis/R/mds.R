@@ -12,7 +12,7 @@
 #' Any column of metadata can be used, regardless of experimental design.
 #' @param shape_var The group from target data that should be indicated by shape.
 #' Any column of metadata can be used, regardless of experimental design. (Optional). Default="none".
-#' @param showConf Boolean.  Draw an elipsis representing the 95 percent confidence interval around each group. Default: TRUE
+#' @param showConf Boolean.  Draw an ellipsis representing the 95 percent confidence interval around each group. Default: TRUE
 #' @param theme Theme for the layout and color scheme for the MDS plot.  Valid selections are integers between 1-6.
 #' @param customLabels If customLabels is set to TRUE, the user will be prompted to provide a custom label for each label.
 #' @param returnData If this value is true, this function will return a sample distance matrix. Default: FALSE
@@ -174,7 +174,7 @@ plot_mds <- function(filename="mds_plot.pdf", color_var, shape_var="none", showC
     plot_out <- ggplot(mds, aes(X1,X2,color=color_var)) + geom_point(size=3)
   }
 
-  #Draw confidence interval elipses.
+  #Draw confidence interval ellipses.
   if(showConf)
   {
     plot_out <- plot_out + stat_ellipse(aes(x=X1, y=X2, group=color_var), type = "norm")

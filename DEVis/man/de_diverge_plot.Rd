@@ -22,7 +22,7 @@ File generation can be turned off using set_output_mode("screen"). Output will b
 }
 \value{
 If returnData is true, this function will return the long-form table for differentially expressed genes
-containing gene names, catagorical variable, and expression values.
+containing gene names, categorical variable, and expression values.
 }
 \description{
 This function plots the log2 fold-change values for all differentially expressed genes for each contrast in

@@ -7,10 +7,10 @@
 prep_targets(target_input, delim = "t")
 }
 \arguments{
-\item{target_input}{Target data in tab seperated format, assumes headers exist for each column.
+\item{target_input}{Target data in tab separated format, assumes headers exist for each column.
 Note that column names in the input count file must match row names in the input target metadata file.}
 
-\item{delim}{Indicate if file is comma or tab delimited.  "t" indicated tab delimited and "c" indicates comma seperated data.  Default: "t"}
+\item{delim}{Indicate if file is comma or tab delimited.  "t" indicated tab delimited and "c" indicates comma separated data.  Default: "t"}
 }
 \value{
 This function will return a properly formatted targets data table based on a provided input file.

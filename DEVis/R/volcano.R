@@ -13,7 +13,7 @@
 #' @param theme Theme for the layout and color scheme for the plot.  Valid selections are integers between 1-6.
 #' @param returnData Boolean. Determines if this visualization should return data used to generate the visualization. Default=FALSE.
 #' @return If returnData is true, this function will return the long-form table of expression containing sample names,
-#' catagorical grouping, and sample IDs.
+#' categorical grouping, and sample IDs.
 #' @keywords expression DE volcano significance p-value visualization
 #' @export
 #' @examples

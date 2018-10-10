@@ -23,11 +23,11 @@ File generation can be turned off using set_output_mode("screen"). Output will b
 }
 \value{
 If returnData is true, this function will return the long-form table of expression containing
-catagorical grouping, and sample IDs, log fold-change, and gene name.
+categorical grouping, and sample IDs, log fold-change, and gene name.
 }
 \description{
 This function plots groupwise expression as with regard to a specified target data grouping. This function can be
-used to vizualize the overall data set according to metadata grouping.  For instance, overall expression at different
+used to visualize the overall data set according to metadata grouping.  For instance, overall expression at different
 timepoints can be viewed, or infected vs control expression levels can be plotted.  This visualization is also
 ideal for examining the impact of normalization or filtering.
 }

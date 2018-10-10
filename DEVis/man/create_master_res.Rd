@@ -24,8 +24,8 @@ Results of this function are also written to file in the /DE/data/ directory in 
 }
 \description{
 This function creates a master result set for the provided DE result sets.  This function finds the union of
-DE gene names and extracts those rows fram all DE result sets, then merges the sets into a single
-master DE file containing both log2foldchange and padj values.  The results are written to the DE
+DE gene names and extracts those rows from all DE result sets, then merges the sets into a single
+master DE file containing both log2foldChange and padj values.  The results are written to the DE
 output directory and returned by the function.
 Relies on init_cutoffs() significant thresholds.
 }

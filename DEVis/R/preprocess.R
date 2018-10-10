@@ -4,7 +4,7 @@
 #' This function takes a count data file and returns the formatted data. Requires that init_data_paths() has been run.
 #' @param count_input Count data in tab-delimited or comma-delimited (CSV) format, assumes headers exist for each column.
 #' Note that column names in the input count file must match row names in the input target metadata file.
-#' @param delim Indicate if file is comma or tab delimited.  "t" indicated tab delimited and "c" indicates comma seperated data.  Default: "t"
+#' @param delim Indicate if file is comma or tab delimited.  "t" indicated tab delimited and "c" indicates comma separated data.  Default: "t"
 #' @seealso \code{\link{prep_targets}}, \code{\link{prep_dds_from_data}}, \code{\link{init_data_paths}}
 #' @return This function will return a properly formatted count data table based on a provided input file.
 #' @keywords counts input
@@ -20,7 +20,7 @@ prep_counts <- function(count_input, delim="t")
 {
   if(delim != "t" && delim != "c")
   {
-    print("Error: Possible delimiter values are 't' (tab-delimited), or 'c' (comma-seperated).")
+    print("Error: Possible delimiter values are 't' (tab-delimited), or 'c' (comma-separated).")
     return(-1)
   }
   if(!exists("counts_dir", envir=.DEVis_env))
@@ -52,9 +52,9 @@ prep_counts <- function(count_input, delim="t")
 #' Read tab or comma delimited target metadata file.
 #'
 #' This function takes a targets metadata file and returns formatted data. Requires that init_data_paths() has been run.
-#' @param target_input Target data in tab seperated format, assumes headers exist for each column.
+#' @param target_input Target data in tab separated format, assumes headers exist for each column.
 #' Note that column names in the input count file must match row names in the input target metadata file.
-#' @param delim Indicate if file is comma or tab delimited.  "t" indicated tab delimited and "c" indicates comma seperated data.  Default: "t"
+#' @param delim Indicate if file is comma or tab delimited.  "t" indicated tab delimited and "c" indicates comma separated data.  Default: "t"
 #' @seealso \code{\link{prep_counts}}, \code{\link{prep_dds_from_data}}, \code{\link{init_data_paths}}
 #' @return This function will return a properly formatted targets data table based on a provided input file.
 #' @keywords targets metadata input
@@ -70,7 +70,7 @@ prep_targets <- function(target_input, delim="t")
 {
   if(delim != "t" && delim != "c")
   {
-    print("Error: Possible delimiter values are 't' (tab-delimited), or 'c' (comma-seperated).")
+    print("Error: Possible delimiter values are 't' (tab-delimited), or 'c' (comma-separated).")
     return(-1)
   }
   if(!exists("targets_dir", envir=.DEVis_env))
@@ -105,7 +105,7 @@ prep_targets <- function(target_input, delim="t")
 #'
 #' This function takes count and targets data and creates a DESeq2 object based on the provided design.
 #' @param count_input Count data in dataframe format as read with prep_counts().  Column names must correspond to target rownames.
-#' @param target_input Target data in dataframe formatas read with prep_targets().  Row names must correspond to count column names.
+#' @param target_input Target data in dataframe format as read with prep_targets().  Row names must correspond to count column names.
 #' @param experiment_design Experimental design for DE comparison.  Can include multiple factors.  Design factors should correspond to column names
 #' in the provided targets file.  Include the primary factor as the final factor in the design and any secondary or batch effects prior.
 #' Must be prefaced with a tilde (~).   I.E. ~ Batch1 + Batch2 + SecondaryCondition + PrimaryCondition

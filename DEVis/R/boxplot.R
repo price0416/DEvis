@@ -2,7 +2,7 @@
 #'
 #' This function generates a box plot to display the expression of an individual gene with regard to a
 #' specified grouping that can be based on any data that exists in the targets file. For example, a plot could
-#' be created to view the expression of a gene as a function of different time points or experimental conditons.
+#' be created to view the expression of a gene as a function of different time points or experimental conditions.
 #' @param filename Filename for output plot.  Valid extensions are ".pdf" and ".png".
 #' File generation can be turned off using set_output_mode("screen"). Output will be written to the /geneplots/ directory.
 #' @param gene_name The name of the gene to create boxplot for. Must match a rowname in count data. String.
@@ -12,7 +12,7 @@
 #' @param theme Theme for the layout and color scheme for the plot.  Valid selections are integers between 1-6.
 #' @param returnData Boolean. Determines if this visualization should return data used to generate the visualization. Default=FALSE.
 #' @return If returnData is true, this function will return the long-form table of expression containing sample names,
-#' catagorical grouping, and sample IDs.
+#' categorical grouping, and sample IDs.
 #' @keywords expression DE boxplot gene visualization
 #' @export
 #' @examples
@@ -198,7 +198,7 @@ plot_gene <- function(filename="gene_plot.pdf", gene_name, groupBy, theme=1, ret
 #' Visualize overall data set as a function of a metadata grouping.
 #'
 #' This function plots groupwise expression as with regard to a specified target data grouping. This function can be
-#' used to vizualize the overall data set according to metadata grouping.  For instance, overall expression at different
+#' used to visualize the overall data set according to metadata grouping.  For instance, overall expression at different
 #' timepoints can be viewed, or infected vs control expression levels can be plotted.  This visualization is also
 #' ideal for examining the impact of normalization or filtering.
 #' @param filename Filename for output plot.  Valid extensions are ".pdf" and ".png".
@@ -209,7 +209,7 @@ plot_gene <- function(filename="gene_plot.pdf", gene_name, groupBy, theme=1, ret
 #' @param theme Theme for the layout and color scheme for the plot.  Valid selections are integers between 1-6.
 #' @param returnData Boolean. Determines if this visualization should return data used to generate the visualization. Default=FALSE.
 #' @return If returnData is true, this function will return the long-form table of expression containing
-#' catagorical grouping, and sample IDs, log fold-change, and gene name.
+#' categorical grouping, and sample IDs, log fold-change, and gene name.
 #' @keywords expression normalization boxplot group distribution visualization
 #' @export
 #' @examples
@@ -402,7 +402,7 @@ plot_group_stats <- function(filename="group_stats_plot.pdf", id_field, groupBy,
 #' @param theme Theme for the layout and color scheme for the plot.  Valid selections are integers between 1-6.
 #' @param returnData Boolean. Determines if this visualization should return data used to generate the visualization. Default=FALSE.
 #' @return If returnData is true, this function will return the long-form table of expression containing
-#' catagorical grouping, and sample IDs, and log2 fold-change.
+#' categorical grouping, and sample IDs, and log2 fold-change.
 #' @keywords expression DE boxplot distribution visualization
 #' @export
 #' @examples

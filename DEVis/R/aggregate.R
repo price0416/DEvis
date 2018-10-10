@@ -334,8 +334,8 @@ write_all_de_results <- function(res_list, lfc_filter=FALSE)
 #' Create a data set consisting of aggregated data for multiple contrasts.
 #'
 #' This function creates a master result set for the provided DE result sets.  This function finds the union of
-#' DE gene names and extracts those rows fram all DE result sets, then merges the sets into a single
-#' master DE file containing both log2foldchange and padj values.  The results are written to the DE
+#' DE gene names and extracts those rows from all DE result sets, then merges the sets into a single
+#' master DE file containing both log2foldChange and padj values.  The results are written to the DE
 #' output directory and returned by the function.
 #' Relies on init_cutoffs() significant thresholds.
 #' @param res_list A list of DESeq result sets created with DESeq2::results(). I.E: list(res1, res2, ..., resN).

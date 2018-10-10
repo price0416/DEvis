@@ -20,7 +20,7 @@ File generation can be turned off using set_output_mode("screen"). Output will b
 }
 \value{
 If returnData is true, this function will return the long-form table of expression containing
-catagorical grouping, and sample IDs, and log2 fold-change.
+categorical grouping, and sample IDs, and log2 fold-change.
 }
 \description{
 This function plots groupwise expression for all differentially expressed genes

@@ -2,7 +2,7 @@
 % Please edit documentation in R/DE_expr_plots.R
 \name{de_density_plot}
 \alias{de_density_plot}
-\title{Vizualize density plots of fold-change or significance values for aggregated data sets.}
+\title{Visualize density plots of fold-change or significance values for aggregated data sets.}
 \usage{
 de_density_plot(res_list, filename = "de_density_plot.pdf",
   type = "pval", method = "union", returnData = FALSE)

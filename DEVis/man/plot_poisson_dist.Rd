@@ -28,17 +28,17 @@ poisson distance measurements between samples.
 \description{
 This function computes and plots sample poisson distances in a symmetrical heatmap. This visualization
 can be used to examine overall similarity between samples and whether or not data are
-behaving as expected based on the experimental design.  Unlike euclidian distance, poisson distance
+behaving as expected based on the experimental design.  Unlike Euclidian distance, poisson distance
 calculation takes into account variation between sample counts when calculating distances.
 This view can also be used to identify potential outlying samples.
 }
 \examples{
 \dontrun{
 
-#Visualize euclidian distances of all samples using "SampleID" target data as labels.
+#Visualize Euclidian distances of all samples using "SampleID" target data as labels.
 plot_poisson_dist("SampleID", filename="poisson_distance.pdf", theme=2, returnData=FALSE)
 
-#Visualize euclidian distances of all samples using "timepoint" target data as labels.
+#Visualize Euclidian distances of all samples using "timepoint" target data as labels.
 #Store the resulting distance matrix data.
 distMatrix <- plot_poisson_dist("timepoint", filename="poisson_distance.pdf",
                                  theme=2, returnData=TRUE)

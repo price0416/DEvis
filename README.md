@@ -29,8 +29,6 @@ devtools::install_github("price0416/DEvis/DEvis")
 library(DEVis)
 ```
 
-DEvis has been submitted for acceptance to the CRAN repository. 
-
 
 ## Documentation:
 

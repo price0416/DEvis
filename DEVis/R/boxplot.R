@@ -325,7 +325,7 @@ plot_group_stats <- function(filename="group_stats_plot.pdf", id_field, groupBy,
   }
   if(theme == 2)
   {
-    nature_pal = c(pal_npg("nrc")(10),pal_npg("nrc", alpha = 0.6)(10),pal_npg("nrc", alpha = 0.3)(10) )
+    nature_pal = c(pal_npg("nrc")(10),pal_npg("nrc", alpha = 0.6)(10),pal_npg("nrc", alpha = 0.3)(15) )
     plot_out <- plot_out + theme_igray() + scale_fill_manual(values=nature_pal)
   }
   if(theme == 3)

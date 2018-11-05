@@ -8,6 +8,7 @@
 #' @param filename Output file destination. String. Valid extensions are .pdf and .png.  The data file accompanying this
 #' plot file will have the same name, but will be output as a tab-delimited text file. Output will be written to
 #' the /DE/counts/ directory. Alternatively, file generation can be turned off using set_output_mode("screen").
+#' @param lfc_filter Boolean.  Determines if DE counts should be displayed with or without the application of the log2FoldChange filter.
 #' @param customLabels If customLabels is set to TRUE, the user will be prompted to provide a custom label for each label on the x-axis.
 #' @param theme The color and design scheme for the output plot.  Valid selections are integers between 1-6.
 #' @param returnData Boolean.  Determines if this visualization should return data used to generate the visualization. Default=FALSE.
@@ -29,7 +30,7 @@
 #' de_counts(res_set=myResList, filename="DE_counts.png", theme=2)
 #'
 #' }
-de_counts <- function(res_list, filename="de_count_barplot.pdf", customLabels=FALSE, theme=1, returnData=FALSE)
+de_counts <- function(res_list, filename="de_count_barplot.pdf", lfc_filter=FALSE, customLabels=FALSE, theme=1, returnData=FALSE)
 {
   imgWidth  = 8
   imgHeight = 8
@@ -48,6 +49,11 @@ de_counts <- function(res_list, filename="de_count_barplot.pdf", customLabels=FA
   if(typeof(filename) != "character")
   {
     stop("filename must be a string.")
+    return(-1)
+  }
+  if(typeof(lfc_filter) != "logical")
+  {
+    stop("lfc_filter must be a logical value. Please enter TRUE or FALSE.")
     return(-1)
   }
   if(typeof(returnData) != "logical")
@@ -81,7 +87,14 @@ de_counts <- function(res_list, filename="de_count_barplot.pdf", customLabels=FA
   }
 
   #Enrich the data.
-  enriched <- unlist(lapply(res_list, enrich_res))
+  if(lfc_filter)
+  {
+    enriched <- unlist(lapply(res_list, enrich_res, TRUE))
+  }
+  else
+  {
+    enriched <- unlist(lapply(res_list, enrich_res))
+  }
   enrich <- unlist(enriched)
 
   #Get the number of up / down DE genes.

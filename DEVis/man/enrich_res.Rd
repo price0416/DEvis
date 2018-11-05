@@ -4,10 +4,12 @@
 \alias{enrich_res}
 \title{Incorporate additional data about differentially expressed genes into a DESeq2 result set.}
 \usage{
-enrich_res(res)
+enrich_res(res, lfc_filter = FALSE)
 }
 \arguments{
 \item{res}{A DESeq2 result set as generated through DESeq2::results().  Must be a DESeq object of type S4.}
+
+\item{lfc_filter}{Should the enrichment apply LFC filtering or not.  Boolean.}
 }
 \value{
 An expanded DESeq result set of type DESeqResMeta containing the following fields:

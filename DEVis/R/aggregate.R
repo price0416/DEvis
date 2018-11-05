@@ -5,6 +5,7 @@
 #' All calculations are performed based on significance thresholds set using the init_cutoffs() function.
 #' This function is typically used as a helper function for data aggregation.
 #' @param res A DESeq2 result set as generated through DESeq2::results().  Must be a DESeq object of type S4.
+#' @param lfc_filter Should the enrichment apply LFC filtering or not.  Boolean. 
 #' @keywords DE aggregate
 #' @return An expanded DESeq result set of type DESeqResMeta containing the following fields:
 #' [numDE, numUp, numDown, allNames, upNames, and downNames, allDE, upDE, downDE, case, control, contrast, and designField]
@@ -23,7 +24,7 @@
 #' #Get the names of all up-regulated differentially expressed genes.
 #' upreg_de_genes <- enriched_result@upNames
 #' }
-enrich_res <- function(res)
+enrich_res <- function(res, lfc_filter=FALSE)
 {
   #Validate parameters.
   try(if(typeof(res) != "S4") stop("Error: enrich_res requires S4 type object as result set for parameter res.", call. = FALSE))
@@ -61,34 +62,73 @@ enrich_res <- function(res)
     numDE = 0
   }
   newRes@numDE = numDE
+  
 
   #Extract all DE names and store.
-  DE_names <- rownames(head(res[order(res$padj),], n=newRes@numDE))
+  if(lfc_filter)
+  {
+    signif_de <- head(res[order(res$padj),], n=newRes@numDE)
+    DE_names  <- rownames(signif_de[signif_de$log2FoldChange >= abs(.DEVis_env$lfc_cutoff),])   
+  }
+  else
+  {
+    DE_names <- rownames(head(res[order(res$padj),], n=newRes@numDE))
+  }
   newRes@allNames <- DE_names
-
+  
   #Extract number upregulated and downregulated, then store.
-  if(!is.na(table(res$padj < .DEVis_env$signif_cutoff & res$log2FoldChange < 0)[2]))
+  if(lfc_filter)
   {
-    numDown = table(res$padj < .DEVis_env$signif_cutoff & res$log2FoldChange < 0)[2]
+    if(!is.na(table(res$padj < .DEVis_env$signif_cutoff & res$log2FoldChange <= (.DEVis_env$lfc_cutoff *-1))[2]))
+    {
+      numDown = table(res$padj < .DEVis_env$signif_cutoff & res$log2FoldChange <= (.DEVis_env$lfc_cutoff *-1))[2]
+    }
+    else
+    {
+      numDown = 0
+    }
+    if(!is.na(table(res$padj < .DEVis_env$signif_cutoff & res$log2FoldChange >= .DEVis_env$lfc_cutoff)[2]))
+    {
+      numUp = table(res$padj < .DEVis_env$signif_cutoff & res$log2FoldChange >= .DEVis_env$lfc_cutoff)[2]
+    }
+    else
+    {
+      numUp = 0
+    }
   }
   else
   {
-    numDown = 0
-  }
-  if(!is.na(table(res$padj < .DEVis_env$signif_cutoff & res$log2FoldChange > 0)[2]))
-  {
-    numUp = table(res$padj < .DEVis_env$signif_cutoff & res$log2FoldChange > 0)[2]
-  }
-  else
-  {
-    numUp = 0
+    if(!is.na(table(res$padj < .DEVis_env$signif_cutoff & res$log2FoldChange < 0)[2]))
+    {
+      numDown = table(res$padj < .DEVis_env$signif_cutoff & res$log2FoldChange < 0)[2]
+    }
+    else
+    {
+      numDown = 0
+    }
+    if(!is.na(table(res$padj < .DEVis_env$signif_cutoff & res$log2FoldChange > 0)[2]))
+    {
+      numUp = table(res$padj < .DEVis_env$signif_cutoff & res$log2FoldChange > 0)[2]
+    }
+    else
+    {
+      numUp = 0
+    }
   }
   newRes@numDown <- numDown
   newRes@numUp <- numUp
 
   #Extract and store the up and downregulard DE gene names.
-  downNames = rownames(res)[which(res$padj < .DEVis_env$signif_cutoff & res$log2FoldChange < 0)]
-  upNames   = rownames(res)[which(res$padj < .DEVis_env$signif_cutoff & res$log2FoldChange > 0)]
+  if(lfc_filter)
+  {
+    downNames = rownames(res)[which(res$padj < .DEVis_env$signif_cutoff & res$log2FoldChange <= (.DEVis_env$lfc_cutoff *-1))]
+    upNames   = rownames(res)[which(res$padj < .DEVis_env$signif_cutoff & res$log2FoldChange >= .DEVis_env$lfc_cutoff)]
+  }
+  else
+  {
+    downNames = rownames(res)[which(res$padj < .DEVis_env$signif_cutoff & res$log2FoldChange < 0)]
+    upNames   = rownames(res)[which(res$padj < .DEVis_env$signif_cutoff & res$log2FoldChange > 0)]
+  }
   newRes@downNames <- downNames
   newRes@upNames <- upNames
 

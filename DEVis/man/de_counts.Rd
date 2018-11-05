@@ -5,7 +5,8 @@
 \title{Visualize differentially expressed gene counts as a stacked barplot.}
 \usage{
 de_counts(res_list, filename = "de_count_barplot.pdf",
-  customLabels = FALSE, theme = 1, returnData = FALSE)
+  lfc_filter = FALSE, customLabels = FALSE, theme = 1,
+  returnData = FALSE)
 }
 \arguments{
 \item{res_list}{A list of DESeq result sets created with DESeq2::results(). I.E: list(res1, res2, ..., resN).}
@@ -13,6 +14,8 @@ de_counts(res_list, filename = "de_count_barplot.pdf",
 \item{filename}{Output file destination. String. Valid extensions are .pdf and .png.  The data file accompanying this
 plot file will have the same name, but will be output as a tab-delimited text file. Output will be written to
 the /DE/counts/ directory. Alternatively, file generation can be turned off using set_output_mode("screen").}
+
+\item{lfc_filter}{Boolean.  Determines if DE counts should be displayed with or without the application of the log2FoldChange filter.}
 
 \item{customLabels}{If customLabels is set to TRUE, the user will be prompted to provide a custom label for each label on the x-axis.}
 

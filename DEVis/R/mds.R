@@ -615,7 +615,7 @@ plot_mds_hulls <- function(filename="mds_hulls_plot.pdf", color_var, shape_var="
   }
   if(theme == 2)
   {
-    nature_pal = c(pal_npg("nrc")(10),pal_npg("nrc", alpha = 0.6)(10),pal_npg("nrc", alpha = 0.3)(10) )
+    nature_pal = c(pal_npg("nrc")(10),pal_npg("nrc", alpha = 0.6)(10),pal_npg("nrc", alpha = 0.3)(15) )
     png <- png + theme_igray() + scale_color_manual(values=nature_pal) + scale_fill_manual(values=nature_pal)
   }
   if(theme == 3)

@@ -423,14 +423,14 @@ plot_mds_hulls <- function(filename="mds_hulls_plot.pdf", color_var, shape_var="
   #Requires that create_master_res() already ran so the union_names list can exist between samples.
   if(deOnly == TRUE)
   {
-    if(!exists("master_union_names", envir=.DEVis_env))
+    if(!exists("aggregate_names", envir=.DEVis_env))
     {
       stop("plot_mds_hulls() requires that create_master_res() be run first if only DE genes will be used.")
       return(-1)
     }
     else
     {
-      data <- data.frame(assay(.DEVis_env$stabilized_data)[.DEVis_env$master_union_names,])
+      data <- data.frame(assay(.DEVis_env$stabilized_data)[.DEVis_env$aggregate_names,])
     }
   }
   else

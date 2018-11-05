@@ -444,7 +444,7 @@ create_master_res <- function(res_list, filename="master_DE.txt", method="union"
   }
 
   #Enrich the data.
-  enriched <- unlist(lapply(res_list, enrich_res))
+  enriched <- unlist(lapply(res_list, enrich_res, lfc_filter))
   enrich <- unlist(enriched)
 
   #Union-based aggregation.

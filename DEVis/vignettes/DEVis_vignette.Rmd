@@ -1,15 +1,16 @@
 ---
 title: "Differential Expression Analysis with DEVis"
-output: 
-  pdf_document: 
+output:
+  html_document:
+    df_print: paged
     toc: yes
-vignette: >
-  %\VignetteIndexEntry{DEVis}
-  %\usepackage[utf8]{inputenc}
-  %\VignetteEngine{knitr::rmarkdown}
-header-includes: 
+#  pdf_document:
+#    toc: yes
+header-includes:
 - \usepackage{graphicx}
 - \usepackage{float}
+vignette: |
+  %\VignetteIndexEntry{DEVis} %\usepackage[utf8]{inputenc} %\VignetteEngine{knitr::rmarkdown}
 ---
 
 ```{r loadData, echo = F, eval = TRUE}
@@ -29,7 +30,7 @@ suppressWarnings({
 library(kableExtra)
 })
 library(knitr)
-options(knitr.table.format = "latex") 
+options(knitr.table.format = "html") 
 ```
 
 ```{r initProjHide, echo = FALSE, eval = TRUE, results='hide', message=FALSE, warning=FALSE}

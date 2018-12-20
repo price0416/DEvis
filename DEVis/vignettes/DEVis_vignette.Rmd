@@ -13,6 +13,7 @@ header-includes:
 vignette: |
   %\VignetteIndexEntry{DEVis} 
   %\usepackage[utf8]{inputenc} 
+  %\usepackage[table]{xcolor}
   %\VignetteEngine{knitr::knitr}
 ---
 
@@ -35,6 +36,7 @@ library(kableExtra)
 library(rmarkdown)
 library(knitr)
 options(knitr.table.format = "html") 
+options(kableExtra.latex.load_packages = FALSE)
 ```
 
 ```{r initProjHide, echo = FALSE, eval = TRUE, results='hide', message=FALSE, warning=FALSE}

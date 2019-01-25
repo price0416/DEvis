@@ -11,10 +11,9 @@ header-includes:
 - \usepackage{graphicx}
 - \usepackage{float}
 vignette: |
-  %\VignetteIndexEntry{DEVis} 
-  %\usepackage[utf8]{inputenc} 
-  %\usepackage[table]{xcolor}
-  %\VignetteEngine{knitr::knitr}
+  %\VignetteIndexEntry{DEVis}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8
 ---
 
 ```{r loadData, echo = F, eval = TRUE}

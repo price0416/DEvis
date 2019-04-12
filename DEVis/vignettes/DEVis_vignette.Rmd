@@ -13,7 +13,7 @@ header-includes:
 vignette: |
   %\VignetteIndexEntry{DEVis}
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r loadData, echo = F, eval = TRUE}
@@ -545,11 +545,11 @@ Here, for instance, we can see that the 6 hour time points for both ebola and re
 Let's take a closer look at these genes in particular with a heat map.
 
 ```{r doHeat2, echo = TRUE, eval = TRUE, results='hide', message=FALSE, warning=FALSE, fig.height = 7, fig.width = 7, fig.align = "center"}
-de_heat(result_list, anno_columns=c("time", "treatment"), 
-        filename="upReg_heatmap.pdf", sort_choice="max", 
-        specific_genes=c("CCL4L2", "IL29", "IRG1", "IL12A"),
-        cluster_contrasts=FALSE,
-        theme=2)
+#de_heat(result_list, anno_columns=c("time", "treatment"), 
+ #       filename="upReg_heatmap.pdf", sort_choice="max", 
+ #       specific_genes=c("CCL4L2", "IL29", "IRG1", "IL12A"),
+  #      cluster_contrasts=FALSE,
+   #     theme=2)
 ```
 
 Here, we have provided the specific_genes argument to force de_heat to display the genes we are interested in looking at.  Also, because it is more informative to see the columns of the heatmap in order, we have turned off the "cluster_contrasts" parameter.  We can see here a clear pattern.  At hour six these genes are down regulated relative to the mock.  At day 1, in all cases expression increases in the ebola treated samples, but only similarly increases in IRG1 and IL12A in the reston virus samples.  At day 2, these genes are no longer being expressed strongly and are back to baseline, but they have continued to be highly expressed in the ebola treatment samples.

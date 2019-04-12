@@ -10,8 +10,6 @@ and provide a variety of ways of exploring and analyzing data.
 The DEvis paper can be found [here](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-2702-z).  
 
 
-Citation: 
-
 Price, A., Caciula, A., Guo, C., Lee, B., Morrison, J., Rasmussen, A., Lipkin, W.I., Jain, K. (2019). DEvis: an R package for aggregation and visualization of differential expression data. BMC Bioinformatics, 20(1), 110. https://doi.org/10.1186/s12859-019-2702-z
 
 

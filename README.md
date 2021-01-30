@@ -31,7 +31,7 @@ biocLite("DESeq2")
 if (!require("devtools")) install.packages("devtools")
 
 #Install DEvis from GitHub repository.
-devtools::install_github("price0416/DEvis/DEvis")
+devtools::install_github("price0416/DEvis/DEVis")
 
 #Load the package.
 library(DEVis)
